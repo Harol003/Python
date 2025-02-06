@@ -1,0 +1,34 @@
+
+********************************************
+Añadir Rutas a Variables del Entorno
+********************************************
+
+C:\Users\TuUsuario\AppData\Local\Programs\Python\PythonX.X
+C:\Users\TuUsuario\AppData\Local\Programs\Python\PythonX.X\Scripts
+
+********************************************
+Verificar que esta correctamente instalado
+********************************************
+
+python --versión
+
+********************************************
+Instalar pyinstaller
+********************************************
+
+pip install pyinstaller
+
+pyinstaller --version
+
+********************************************
+Generar .exe
+********************************************
+
+cd "C:\Users\Harol\Dropbox\9.Formacion_Universitaria\Poli_\2025\Diseño_Algoritmos_II\Codigos\Software"
+
+pyinstaller --onefile MiPrograma.py
+
+
+
+
+
