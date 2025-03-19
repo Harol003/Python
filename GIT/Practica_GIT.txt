@@ -1,0 +1,279 @@
+***************************************
+GIT
+***************************************
+
+1. https://git-scm.com/  - Descargar Versión de Windows
+
+2. Instalar Versión Windows GIT (64 Bits o 32 Bits)
+
+3. Desde PowerShell git --versión   (Ver versión de Git)
+
+4. Configurar Identidad de GIT desde PowerShell
+
+git config --global user.name "Tu Nombre"
+git config --global user.email "Harol003@gmail.com"
+
+5. Validar Configuración desde Desde PowerShell
+
+git config --list
+
+****************************************
+CREAR PROYECTO
+****************************************
+
+1. Desde PowerShell 
+
+mkdir PolitecnicoWeb
+cd PolitecnicoWeb
+
+2. Iniciar Repositorio
+
+git init
+
+3. Crear los archivos en Visual Studio Code
+
+code .
+
+
+4.  index.html
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Politécnico Internacional</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Politécnico Internacional</h1>
+        <h2>Clase: Arquitectura de Software</h2>
+        <h3>Nombre: Harol Torres</h3>
+        <p class="message">Hola, Mundo.</p>
+        <div class="info">
+            <h2>¿Qué es Python?</h2>
+            <p>Python es un lenguaje de programación interpretado, fácil de leer y de aprender, utilizado para desarrollar aplicaciones de todo tipo.</p>
+            <h2>¿Para qué sirve Flask?</h2>
+            <p>Flask es un microframework de Python que permite crear aplicaciones web de forma sencilla y rápida, ideal para proyectos pequeños y medianos.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+5. styles.css
+
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 90%;
+}
+h1 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 2.5em;
+}
+h2, h3 {
+    color: #0056b3;
+    margin: 10px 0;
+}
+.message {
+    color: #28a745;
+    font-size: 1.5em;
+    margin: 20px 0;
+    font-weight: bold;
+}
+.info {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0f8ff;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+.info h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+.info p {
+    color: #333;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2, h3 {
+        font-size: 1.2em;
+    }
+    .message {
+        font-size: 1.2em;
+    }
+}
+
+6. app.py
+
+from flask import Flask, render_template
+
+app = Flask(__name__, template_folder='.')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+7. Instalar Flask (Librería Python)
+
+pip install flask
+
+8. Probar el proyecto de forma local
+
+python app.py
+
+http://127.0.0.1:5000/
+
+
+****************************************
+SUBIR EL PROYECTO A GITHUB
+****************************************
+
+1. Crear Nuevo Token 
+
+Enlace de Creacion de Tokens - https://github.com/settings/tokens
+
+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HT 
+
+1. Cofigurar URL Remota
+
+git remote set-url origin https://harol003:TU_TOKEN_AQUI@github.com/harol003/PolitecnicoWeb.git
+
+2. Verificar que se ha Actualizado. 
+
+git remote -v
+
+3. Debe Tener esta salida
+
+origin  https://harol003@github.com/harol003/PolitecnicoWeb.git (fetch)
+origin  https://harol003@github.com/harol003/PolitecnicoWeb.git (push)
+
+4. Subir los archivos
+
+git add .
+git commit -m "Descripción del cambio"
+git push origin master
+
+5. Confirmación
+
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 450 bytes | 450.00 KiB/s, done.
+To https://github.com/harol003/PolitecnicoWeb.git
+
+
+****************************************
+TRABAJO COLABORATIVO PROYECTO A GITHUB
+****************************************
+
+1. Clonar el Repositorio
+
+git clone https://github.com/harol003/PolitecnicoWeb.git
+cd PolitecnicoWeb
+
+2. Realizar Cambios con Visual Studio Code
+
+code .
+
+3. Subir Cambios
+
+git add .
+git commit -m "Se agregó mi nombre al saludo"
+git push origin master
+
+
+4. Actualizar cambios
+
+git pull origin master
+
+5. Recordar el TOKEN
+
+git config --global credential.helper manager
+
+
+****************************************
+TRABAJO COLABORATIVO FORK PROYECTO A GITHUB
+****************************************
+
+1. Ir a la ruta
+
+cd $HOME\Desktop
+
+
+2. Clonar con Fork
+
+git clone https://github.com/estudiante/PolitecnicoWeb.git
+cd PolitecnicoWeb
+
+
+3. Validar Clonación
+
+ls
+
+4. Modificar Proyecto
+
+code .
+
+5. Agregar Cambios
+
+git add .
+
+6. Confirmar cambios
+
+git commit -m "Estudiante: Harol Torres"
+
+7. Subir los cambios
+
+git push origin main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
