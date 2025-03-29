@@ -1,0 +1,7 @@
+tkinter
+mysql-connector-python
+fpdf
+pandas
+
+#pip install -r requirements.txt
+#pip list

@@ -1,0 +1,32 @@
+##################################################
+ACTUALIZACION SERVIDOR 
+##################################################
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt update
+
+##################################################
+INSTALACION Y CONFIGURACION MYSQL SERVIDOR 
+##################################################
+
+sudo apt install mysql-server -y
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo mysql -u root -p
+
+-- Crear el usuario y otorgarle permisos de acceso remoto
+CREATE USER IF NOT EXISTS 'politecnico'@'192.168.20.24' IDENTIFIED BY 'politecnico';
+GRANT ALL PRIVILEGES ON gestion_usuarios.* TO 'politecnico'@'192.168.20.24';
+FLUSH PRIVILEGES;
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+-- Permitir conexiones remotas en MySQL (esto se hace en la configuración del servidor)
+-- Editar /etc/mysql/mysql.conf.d/mysqld.cnf y cambiar:
+-- bind-address = 0.0.0.0
+
+sudo systemctl restart mysql
+sudo systemctl status mysql
+sudo ufw allow from 192.168.20.24 to any port 3306
+sudo ufw reload
